@@ -7,7 +7,7 @@ export const personalInfo = {
   photo: "https://customer-assets.emergentagent.com/job_pm-portfolio-35/artifacts/gzvya6lv_Pranay%20Mishra.png",
   email: "pranaymishra27@gmail.com",
   linkedin: "https://linkedin.com/in/pranaymishra-pm",
-  location: "Patna, Bihar, India",
+  location: "India",
   website: "pranaymishra.pm"
 };
 
@@ -508,7 +508,7 @@ export const contactData = {
   details: [
     { label: "Email", value: "pranaymishra27@gmail.com" },
     { label: "LinkedIn", value: "linkedin.com/in/pranaymishra-pm" },
-    { label: "Location", value: "Patna, Bihar, India" },
+    { label: "Location", value: "India" },
     { label: "Open to", value: "Senior PM roles · Product Consulting · Collaborations" },
     { label: "Response time", value: "Usually within 48 hours" }
   ]
