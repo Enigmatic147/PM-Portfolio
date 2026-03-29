@@ -3,7 +3,7 @@
 export const personalInfo = {
   name: "Pranay Mishra",
   title: "Senior Product Manager",
-  tagline: "SaaS & Healthtech",
+  tagline: "SaaS",
   photo: "https://customer-assets.emergentagent.com/job_pm-portfolio-35/artifacts/gzvya6lv_Pranay%20Mishra.png",
   email: "pranaymishra27@gmail.com",
   linkedin: "https://linkedin.com/in/pranaymishra-pm",
@@ -13,9 +13,9 @@ export const personalInfo = {
 
 export const heroData = {
   headline: "Building products that drive real business outcomes.",
-  description: "9+ years delivering ₹10Cr+ revenue impact and scaling SaaS & healthtech products to 1,500+ mid-market customers through GTM strategy, data-driven decisions, and cross-functional leadership.",
+  description: "9+ years delivering ₹10Cr+ revenue impact and scaling SaaS products to 1,500+ mid-market customers through GTM strategy, data-driven decisions, and cross-functional leadership.",
   stats: [
-    { value: "9+", label: "years in SaaS & healthtech" },
+    { value: "9+", label: "years in SaaS" },
     { value: "₹10Cr+", label: "annual revenue impact" },
     { value: "1,500+", label: "mid-market customers" }
   ],
@@ -465,7 +465,7 @@ And in product management, behavior beats sentiment every time.`
 ];
 
 export const aboutData = {
-  bio: "I'm a Senior Product Manager with 9+ years of experience scaling SaaS and healthtech products across mid-market and enterprise segments. I've delivered ₹10Cr+ in annual revenue impact, improved NPS by 22%, and reduced CAC by 34% — not by chasing vanity metrics, but by understanding customers deeply and building the right things.",
+  bio: "I'm a Senior Product Manager with 9+ years of experience scaling SaaS products across mid-market and enterprise segments. I've delivered ₹10Cr+ in annual revenue impact, improved NPS by 22%, and reduced CAC by 34% — not by chasing vanity metrics, but by understanding customers deeply and building the right things.",
   bio2: "Trained at IIM Lucknow in data-driven product management, I combine structured thinking with genuine empathy. Whether it's a VoC program, an SQL funnel deep-dive, or a Design Thinking sprint — I'm most alive when solving real problems with real constraints.",
   bio3: "Outside of product, I've represented Bihar at national events, edited a magazine, and organised community campaigns. I believe the best PMs are curious humans first.",
   education: [

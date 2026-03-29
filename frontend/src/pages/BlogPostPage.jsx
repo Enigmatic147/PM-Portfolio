@@ -1,19 +1,43 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { blogPostsData } from '../mock';
+import { getBlogPostBySlug } from '../services/api';
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
-  const post = blogPostsData.find(p => p.slug === slug);
+  const [post, setPost] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    loadPost();
   }, [slug]);
 
-  if (!post) {
+  const loadPost = async () => {
+    try {
+      const data = await getBlogPostBySlug(slug);
+      setPost(data.post);
+    } catch (error) {
+      setNotFound(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-white pt-32 pb-24 px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-neutral-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (notFound || !post) {
     return <Navigate to="/" replace />;
   }
 
@@ -125,7 +149,7 @@ const BlogPostPage = () => {
             </Badge>
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4" />
-              <span>{post.date}</span>
+              <span>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
             </div>
             <div className="flex items-center gap-2">
               <Clock className="h-4 w-4" />

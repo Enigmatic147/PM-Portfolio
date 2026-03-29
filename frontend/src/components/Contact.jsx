@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { contactData, personalInfo, submitContactForm } from '../mock';
+import { contactData, personalInfo } from '../mock';
+import { submitContactForm } from '../services/api';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
@@ -32,7 +33,7 @@ const Contact = () => {
       if (result.success) {
         toast({
           title: "Message sent!",
-          description: "Thank you for reaching out. I'll get back to you soon.",
+          description: result.message || "Thank you for reaching out. I'll get back to you soon.",
         });
         setFormData({ name: '', email: '', subject: '', message: '' });
       }

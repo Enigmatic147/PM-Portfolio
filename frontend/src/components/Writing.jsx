@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { blogPostsData } from '../mock';
+import { getAllBlogPosts } from '../services/api';
 import { ArrowRight } from 'lucide-react';
 import { Badge } from './ui/badge';
 
 const Writing = () => {
+  const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    loadPosts();
+  }, []);
+
+  const loadPosts = async () => {
+    try {
+      const data = await getAllBlogPosts();
+      setPosts(data.posts);
+    } catch (error) {
+      console.error('Failed to load blog posts:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const getDifficultyColor = (difficulty) => {
     switch(difficulty) {
       case 'Beginner':
@@ -17,6 +35,16 @@ const Writing = () => {
         return 'bg-neutral-100 text-neutral-800 border-neutral-300';
     }
   };
+
+  if (isLoading) {
+    return (
+      <section id="writing" className="py-24 px-6 lg:px-8 bg-neutral-50">
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="text-neutral-600">Loading posts...</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="writing" className="py-24 px-6 lg:px-8 bg-neutral-50">
@@ -36,7 +64,7 @@ const Writing = () => {
 
         {/* Blog Posts */}
         <div className="space-y-8">
-          {blogPostsData.map((post) => (
+          {posts.map((post) => (
             <Link
               key={post.id}
               to={`/blog/${post.slug}`}
@@ -52,7 +80,7 @@ const Writing = () => {
                   {/* Content */}
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-3 mb-3 text-sm text-neutral-500">
-                      <span>{post.date}</span>
+                      <span>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
                       <span>•</span>
                       <span className="font-medium text-black">{post.category}</span>
                       <span>•</span>
