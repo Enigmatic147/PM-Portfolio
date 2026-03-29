@@ -82,7 +82,7 @@ const About = () => {
             </div>
 
             {/* Skills */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {aboutData.skills.map((skillGroup, index) => (
                 <div key={index} className="border border-neutral-200 p-6">
                   <h4 className="text-sm font-semibold text-black mb-4 uppercase tracking-wide">

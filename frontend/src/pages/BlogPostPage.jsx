@@ -3,6 +3,7 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { blogPostsData } from '../mock';
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
 import { Button } from '../components/ui/button';
+import { Badge } from '../components/ui/badge';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
@@ -15,6 +16,19 @@ const BlogPostPage = () => {
   if (!post) {
     return <Navigate to="/" replace />;
   }
+
+  const getDifficultyColor = (difficulty) => {
+    switch(difficulty) {
+      case 'Beginner':
+        return 'bg-green-100 text-green-800 border-green-300';
+      case 'Intermediate':
+        return 'bg-yellow-100 text-yellow-800 border-yellow-300';
+      case 'Advanced':
+        return 'bg-red-100 text-red-800 border-red-300';
+      default:
+        return 'bg-neutral-100 text-neutral-800 border-neutral-300';
+    }
+  };
 
   // Convert markdown-style content to HTML-like structure
   const renderContent = (content) => {
@@ -106,6 +120,9 @@ const BlogPostPage = () => {
             <span className="px-3 py-1 bg-black text-white text-xs font-medium uppercase tracking-wide">
               {post.category}
             </span>
+            <Badge variant="outline" className={`text-xs font-medium ${getDifficultyColor(post.difficulty)}`}>
+              {post.difficulty}
+            </Badge>
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4" />
               <span>{post.date}</span>

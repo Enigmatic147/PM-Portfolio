@@ -2,8 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { blogPostsData } from '../mock';
 import { ArrowRight } from 'lucide-react';
+import { Badge } from './ui/badge';
 
 const Writing = () => {
+  const getDifficultyColor = (difficulty) => {
+    switch(difficulty) {
+      case 'Beginner':
+        return 'bg-green-100 text-green-800 border-green-300';
+      case 'Intermediate':
+        return 'bg-yellow-100 text-yellow-800 border-yellow-300';
+      case 'Advanced':
+        return 'bg-red-100 text-red-800 border-red-300';
+      default:
+        return 'bg-neutral-100 text-neutral-800 border-neutral-300';
+    }
+  };
+
   return (
     <section id="writing" className="py-24 px-6 lg:px-8 bg-neutral-50">
       <div className="max-w-7xl mx-auto">
@@ -41,6 +55,10 @@ const Writing = () => {
                       <span>{post.date}</span>
                       <span>•</span>
                       <span className="font-medium text-black">{post.category}</span>
+                      <span>•</span>
+                      <Badge variant="outline" className={`text-xs font-medium ${getDifficultyColor(post.difficulty)}`}>
+                        {post.difficulty}
+                      </Badge>
                     </div>
                     <h3 className="text-2xl md:text-3xl font-serif font-bold text-black mb-3 leading-tight group-hover:text-neutral-700 transition-colors">
                       {post.title}

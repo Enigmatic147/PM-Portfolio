@@ -91,6 +91,7 @@ export const blogPostsData = [
     date: "March 24, 2026",
     category: "Data & Analytics",
     readTime: "5 min read",
+    difficulty: "Beginner",
     slug: "sql-product-decisions",
     excerpt: "Most PMs rely on dashboards and gut feelings. Here's why learning SQL transformed my decision-making process and how you can start today.",
     content: `# How SQL changed the way I make product decisions
@@ -152,6 +153,7 @@ And once you make that shift, there's no going back.`
     date: "March 17, 2026",
     category: "GTM Strategy",
     readTime: "6 min read",
+    difficulty: "Beginner",
     slug: "gtm-mistakes-pms-make",
     excerpt: "Building a great product means nothing if you can't get it to market effectively. Here are the GTM mistakes I see repeatedly — and how to fix them.",
     content: `# The GTM mistakes most PMs make — and how to avoid them
@@ -241,6 +243,7 @@ And when you get it right, growth stops being a mystery.`
     date: "March 10, 2026",
     category: "Discovery",
     readTime: "5 min read",
+    difficulty: "Beginner",
     slug: "voc-programs-broken",
     excerpt: "Voice of Customer programs sound great in theory. In practice, most are theater. Here's what actually works.",
     content: `# Why VoC programs are broken — and how to fix them
@@ -354,6 +357,7 @@ And when you do that, customer-centricity stops being a buzzword and starts bein
     date: "March 3, 2026",
     category: "Metrics",
     readTime: "4 min read",
+    difficulty: "Beginner",
     slug: "nps-lying-what-to-measure",
     excerpt: "NPS has become the default metric for customer satisfaction. But it's hiding more than it reveals. Here's what I track instead.",
     content: `# NPS is lying to you — here's what to measure instead
@@ -489,10 +493,6 @@ export const aboutData = {
     {
       category: "GTM & Growth",
       items: ["Acquisition", "Activation", "Retention", "Pricing", "Competitive Analysis"]
-    },
-    {
-      category: "Data & Analytics",
-      items: ["SQL", "Funnel Analytics", "A/B Testing", "Forecasting Models"]
     },
     {
       category: "Leadership",
