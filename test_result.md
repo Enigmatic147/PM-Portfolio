@@ -101,3 +101,101 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Test the backend APIs for Pranay Mishra's portfolio including public blog API, blog post by slug, contact form, admin login, and admin blog APIs"
+
+backend:
+  - task: "Public Blog API"
+    implemented: true
+    working: true
+    file: "/app/backend/routes/blog.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "GET /api/blog endpoint tested successfully. Returns 4 blog posts with difficulty levels set to 'Beginner'. Response has proper structure with posts array containing all required fields (title, slug, content, category, difficulty)."
+
+  - task: "Blog Post by Slug API"
+    implemented: true
+    working: true
+    file: "/app/backend/routes/blog.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "GET /api/blog/sql-product-decisions endpoint tested successfully. Returns single post with all required fields (title, content, category, difficulty, slug, excerpt, readTime). Correct post retrieved by slug."
+
+  - task: "Contact Form API"
+    implemented: true
+    working: true
+    file: "/app/backend/routes/contact.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "POST /api/contact endpoint tested successfully with test data (name: John Smith, email: john.smith@example.com, subject: Portfolio Inquiry, message: inquiry text). Returns success response with message 'Thank you for your message! I'll get back to you soon.'"
+
+  - task: "Admin Login API"
+    implemented: true
+    working: true
+    file: "/app/backend/routes/admin.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "POST /api/admin/login endpoint tested successfully with credentials (username: admin, password: admin123). Returns JWT token and user info. Authentication working properly."
+
+  - task: "Admin Blog API"
+    implemented: true
+    working: true
+    file: "/app/backend/routes/admin.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "GET /api/admin/blog endpoint tested successfully with JWT authorization header. Returns all 4 posts including admin-specific fields (createdAt, updatedAt). JWT authentication working correctly."
+
+  - task: "Environment Configuration Fix"
+    implemented: true
+    working: true
+    file: "/app/backend/routes/*.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "testing"
+        comment: "Initial backend startup failed due to MONGO_URL environment variable not being available at route import time. KeyError: 'MONGO_URL' in routes/blog.py, routes/contact.py, and routes/admin.py."
+      - working: true
+        agent: "testing"
+        comment: "Fixed environment variable loading issue by adding dotenv.load_dotenv() calls to each route file before accessing os.environ. Backend now starts successfully and all APIs are functional."
+
+frontend:
+  # No frontend testing performed as per instructions
+
+metadata:
+  created_by: "testing_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "All backend APIs tested and working"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+  - agent: "testing"
+    message: "Completed comprehensive backend API testing for Pranay Mishra's portfolio. All 5 main API endpoints tested successfully: Public Blog API (GET /api/blog), Blog Post by Slug (GET /api/blog/sql-product-decisions), Contact Form (POST /api/contact), Admin Login (POST /api/admin/login), and Admin Blog API (GET /api/admin/blog). Fixed critical environment variable loading issue that was preventing backend startup. All APIs now working correctly with 100% test success rate. Database properly seeded with 4 blog posts and admin user (admin/admin123). Backend ready for production use."
