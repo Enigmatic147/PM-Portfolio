@@ -20,7 +20,6 @@ export const heroData = {
     { value: "1,500+", label: "mid-market customers" }
   ],
   skills: [
-    { icon: "database", title: "Data-driven decisions", description: "SQL, funnel analytics & forecasting" },
     { icon: "users", title: "Customer-centric", description: "VoC programs & design thinking" },
     { icon: "trending-up", title: "GTM & growth", description: "Acquisition, activation & retention" },
     { icon: "target", title: "Outcome-focused", description: "OKRs tied to real business value" }
