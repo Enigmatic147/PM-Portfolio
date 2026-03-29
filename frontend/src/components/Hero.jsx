@@ -16,7 +16,7 @@ const Hero = () => {
         {/* Main Heading */}
         <div className="max-w-4xl">
           <p className="text-sm font-medium text-neutral-600 mb-4 tracking-wide uppercase">
-            Senior Product Manager · SaaS & Healthtech
+            Senior Product Manager · SaaS
           </p>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-black leading-tight mb-6">
             {heroData.headline}
