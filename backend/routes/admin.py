@@ -58,8 +58,24 @@ async def admin_login(credentials: AdminLogin):
 @router.get("/blog")
 async def get_all_admin_posts(admin: dict = Depends(verify_admin_token)):
     """Get all blog posts (including unpublished)"""
-    posts_cursor = db.blog_posts.find().sort("date", -1)
-    posts = await posts_cursor.to_list(length=1000)
+    posts_cursor = db.blog_posts.find(
+        {},
+        {
+            "_id": 1,
+            "title": 1,
+            "slug": 1,
+            "excerpt": 1,
+            "category": 1,
+            "difficulty": 1,
+            "readTime": 1,
+            "number": 1,
+            "date": 1,
+            "published": 1,
+            "createdAt": 1,
+            "updatedAt": 1
+        }
+    ).sort("date", -1).limit(100)
+    posts = await posts_cursor.to_list(length=100)
     
     for post in posts:
         post["_id"] = str(post["_id"])
@@ -159,8 +175,19 @@ async def delete_blog_post(post_id: str, admin: dict = Depends(verify_admin_toke
 @router.get("/contacts")
 async def get_all_contacts(admin: dict = Depends(verify_admin_token)):
     """Get all contact form submissions"""
-    contacts_cursor = db.contact_submissions.find().sort("submittedAt", -1)
-    contacts = await contacts_cursor.to_list(length=1000)
+    contacts_cursor = db.contact_submissions.find(
+        {},
+        {
+            "_id": 1,
+            "name": 1,
+            "email": 1,
+            "subject": 1,
+            "message": 1,
+            "status": 1,
+            "submittedAt": 1
+        }
+    ).sort("submittedAt", -1).limit(100)
+    contacts = await contacts_cursor.to_list(length=100)
     
     for contact in contacts:
         contact["_id"] = str(contact["_id"])

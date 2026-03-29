@@ -4,7 +4,7 @@ import jwt
 from passlib.context import CryptContext
 import os
 
-SECRET_KEY = os.environ.get('JWT_SECRET', 'your-secret-key-change-this-in-production')
+SECRET_KEY = os.environ['JWT_SECRET']  # Required, no fallback
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # 7 days
 
