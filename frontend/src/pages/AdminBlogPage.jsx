@@ -12,9 +12,10 @@ const AdminBlogPage = () => {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    loadPosts();
-  }, []);
+ useEffect(() => {
+  loadContacts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
 
   const loadPosts = async () => {
     try {
